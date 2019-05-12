@@ -188,6 +188,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		}
 		ui.render(g);
 		g.dispose();
+		/*É obrigatorio o graphics(g) receber o bs.getDrawGraphics() para imprimir os textos,
+		 * fazer isso somente depois de renderizar os tipos graphicos*/
 		g = bs.getDrawGraphics();
 		g.drawImage(this.image, 0, 0, WIDTH * 3, HEIGHT * 3, null);
 		g.setFont(new Font("arial", 1, 25));
