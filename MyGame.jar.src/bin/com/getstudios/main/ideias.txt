@@ -1,0 +1,14 @@
+ - Artes de sprites do jogo
+ - pausar jogo, game over, start menu
+ - Sistema de animações para o jogo
+ - Controle do jogo pelo teclado
+ - Sistema para Shooting
+ - Sistema para criação de mapa
+ - Sistema de varios leveis
+ - Inimigos no Jogo
+ - Boss battle
+ - Coletar itens
+ - Aumentar o ataque ou defesa de acordo com o item
+ - Sistema de dano
+ - Sistema para salvar e carregar o Jogo
+ - Audio e música(para o final)
