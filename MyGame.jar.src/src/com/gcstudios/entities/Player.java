@@ -47,7 +47,7 @@ public class Player extends Entity {
 	private BufferedImage[] efeitoPoder;
 	
 	private int timeEnergiaRecovery = 0,  startFrameTime = 0, stopFrameTime = 60;
-	//private int maxTimeRecovery ; // Não esta sendo usada no momento
+	//private int maxTimeRecovery ; // NÃ£o esta sendo usada no momento
 	
 	private boolean canRecovery = false;
 	TimerClock time;
@@ -153,7 +153,7 @@ public class Player extends Entity {
 				this.soundContTime = 0;
 			}
 		}
-		/** Recuperação de energia e vida. Classe que conta o tempo é usada */
+		/** RecuperaÃ§Ã£o de energia e vida. Classe que conta o tempo Ã© usada */
 		TimerClock.countSeconds(3);
 		timeEnergiaRecovery = TimerClock.countSeconds(3);
 		
@@ -167,10 +167,26 @@ public class Player extends Entity {
 				}
 			}
 		}
-		
+		attriutesUpdateByTime(4);
 		updateCamera();
 	}
-
+	/** RecuperaÃ§Ã£o de energia e vida. Classe que conta o tempo Ã© usada */
+	public void attriutesUpdateByTime(int timeByUpdate) {
+		
+		TimerClock.countSeconds(timeByUpdate);
+		timeEnergiaRecovery = TimerClock.countSeconds(timeByUpdate);
+		
+		if( timeEnergiaRecovery >= timeByUpdate ) {
+			startFrameTime++;
+			if( startFrameTime == stopFrameTime && !this.isDamage) {
+				
+				startFrameTime = 0;
+				if(energia < maxEnergia) {
+					energia ++;
+				}
+			}
+		}
+	}
 	public void updateCamera() {
 		Camera.x = Camera.clamp(getX() - Game.WIDTH / 2, 0, World.WIDTH * 16 - Game.WIDTH);
 		Camera.y = Camera.clamp(getY() - Game.HEIGHT / 2, 0, World.HEIGHT * 16 - Game.HEIGHT);
@@ -200,7 +216,7 @@ public class Player extends Entity {
 	int the_16 = 16;
 
 	public void render(Graphics g) {
-		//Animação sem receber dano
+		//AnimaÃ§Ã£o sem receber dano
 		if (!this.isDamage) {
 			if (!this.moved) {
 				if (this.dir == this.right_dir) {
@@ -237,7 +253,7 @@ public class Player extends Entity {
 			if (this.soundContTime == 29) {
 				this.sound.play();
 			}
-			// Animação recebendo dano
+			// AnimaÃ§Ã£o recebendo dano
 			g.drawImage(this.playerDamage, getX() - Camera.x, getY() - Camera.y, this.the_16, this.the_16, null);
 			if (this.armado) {
 				if (this.dir == this.right_dir) {
