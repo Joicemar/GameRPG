@@ -264,8 +264,15 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			}
 		}
 		if (e.getKeyCode() == 27) {
-			gameState = "menu";
-			Menu.pauseGame = true;
+			if( gameState == "menuSlots" ) {
+				gameState = "menu";
+				//Menu.pauseGame = false;
+			}
+			/*Caso somente se o jogo estiver rodando ira pausar ou voltar*/
+			if( gameState == "normal" && Menu.pauseGame == false) {
+				gameState = "menu";
+				Menu.pauseGame = true;
+			}
 		}
 		if ((e.getKeyCode() == KeyEvent.VK_F) && (gameState == "normal")) {
 			System.out.println("salvo");
