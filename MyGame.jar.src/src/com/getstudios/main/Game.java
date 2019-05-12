@@ -261,6 +261,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			}
 			if (gameState == "menu") {
 				Menu.enter = true;
+				Menu.pauseGame = false;
 			}
 		}
 		if (e.getKeyCode() == 27) {
@@ -272,6 +273,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			if( gameState == "normal" && Menu.pauseGame == false) {
 				gameState = "menu";
 				Menu.pauseGame = true;
+			}
+			else if( gameState == "menu" && Menu.pauseGame == true) {
+				gameState = "normal";
+				Menu.pauseGame = false;
 			}
 		}
 		if ((e.getKeyCode() == KeyEvent.VK_F) && (gameState == "normal")) {
